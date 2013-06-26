@@ -19,6 +19,7 @@ def checkExistance(commandData):
 
 def createGame(gameName):
 	activeGames.append([' '.join(gameName), 1, 'obnoxious'])
+	matchServer.sendall('GAME %s' % str(' '.join(gameName)))
 	return 'MATCH CREATED\n'
 
 def handleConnection():
