@@ -3,13 +3,13 @@ from threading import Thread
 from net.netshared import *
 
 
-def c2s_send_message(s, host, port, msg):
+def c2s_send_message(s, host, port, msg): # send a message from client to server
     send_str = "{0} {1} {2} {3} {4}".format(msg.priority, msg.id, msg.where, msg.mtype, msg.args)
     mbytes = send_str.encode()
     s.sendto(mbytes, (host, port))
 
 
-def s2c_parse(text):
+def s2c_parse(text): # parse a message from the server
     l = text.split(" ")
     if len(l) > 3: # chat
         id_, type_ = l[:2]
@@ -27,7 +27,7 @@ class Client:
         self.oqueue = []
         self.iqueue = []
 
-        self.interfaces = {
+        self.interfaces = { # this will be the final layer between the net stuff and game
             "chat": None,
             "room": None,
             "game": None
@@ -49,13 +49,13 @@ class Client:
         self.start_iparser_thread()
         self.start_sender_thread(s)
 
-    def add_message(self, msg):
+    def add_message(self, msg): # add a message with a unique id
 
         msg.set_id(self.curr_id)
         self.oqueue.append(msg)
         self.curr_id += 1
 
-    def send(self, s):
+    def send(self, s): # send a message from the queue
         if len(self.oqueue) == 0:
             return
         
@@ -94,10 +94,11 @@ class Client:
             if len(self.iqueue) > 0:
                 parseme = self.iqueue.pop(0)
                 self.parse_input(parseme)
+                #try: self.parse_input(parseme)
+                #except Exception: pass
 
-    def parse_input(self, i):
+    def parse_input(self, i): # parse messages from the server
         id_, type_, args = i
-
         if type_ == "acknowledged":
             try:
                 ack_msg_index = list(map(lambda x: x.id, self.oqueue)).index(int(id_))

@@ -13,3 +13,8 @@ if __name__ == "__main__":
     c.add_message(auth_msg("vegard1992", "poop123"))
     sleep(1)
     c.add_message(chat_msg("lobby", {"message": "sup nerds"}))
+    c.add_message(chat_msg("room", {"message": "sup nerds1", "room": "dongsquad420"}))
+    c.add_message(create_msg({"name": "dongsquad420"}))
+    c.add_message(chat_msg("room", {"message": "sup nerds2", "room": "dongsquad420"}))
+    c.add_message(join_msg({"name": "dongsquad420"}))
+    c.add_message(chat_msg("room", {"message": "sup nerds3", "room": "dongsquad420"}))

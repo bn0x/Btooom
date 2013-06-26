@@ -1,4 +1,8 @@
 
+
+# functions shared by both client.py, server.py, and netsupp.py
+
+
 class Message:
     def __init__(self, where, mtype, args, priority):
         self.where = where
@@ -12,7 +16,7 @@ class Message:
         self.id = _id
         
 
-def parse_args(args, fs):
+def parse_args(args, fs): # parse arguments in a message
     d = {}
     i = 0
     for n in args.split("@"):
@@ -22,5 +26,5 @@ def parse_args(args, fs):
     return d
 
 
-def t2s(t):
+def t2s(t): # tuple to string
     return list(map(int, x.split(",")))
