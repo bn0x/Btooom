@@ -18,6 +18,10 @@ def gamesList():
 
 def createGame(gameName):
 	global activeGamesList
+	if address[0] in registeredNicks:
+		pass
+	else:
+		return 'NOT REGISTERED'
 	try:
 		gameName = ' '.join(gameName).strip('\n')
 	except:
@@ -26,6 +30,7 @@ def createGame(gameName):
 	if gameName.strip('\n') in activeGamesList:
 		return '%s EXIST\n' % gameName
 	else:
+		activeGamesList[gameName] = gameName
 		return '%s CREATED\n' % gameName
 
 	
