@@ -37,6 +37,8 @@ class Player(pygame.sprite.Sprite):
 
 		self.chosenKeys = wasdKeys
 
+		self.life = 100
+
 	def input(self, event):
 		keys = pygame.key.get_pressed()
 
@@ -96,3 +98,7 @@ class Player(pygame.sprite.Sprite):
 
 	def stopX(self):
 		self.dx = 0
+
+	def getLife(self): return self.life
+	def increaseLife(amount): self.life += amount
+	def decreaseLife(amount): self.life -= amount 
