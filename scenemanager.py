@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from playscene import PlayScene
 from menuscene import MenuScene
 
 class SceneManager(object):
