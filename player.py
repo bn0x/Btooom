@@ -5,7 +5,7 @@ import pygame
 from pygame.locals import *
 
 class Player(pygame.sprite.Sprite):
-	def __init__(self, x, y):
+	def __init__(self, x, y, surface):
 		super(Player, self).__init__()
 
 		self.x = x
@@ -15,6 +15,8 @@ class Player(pygame.sprite.Sprite):
 		self.dy = 0
 
 		self.speed = 0.2
+
+		self.surface = surface
 
 		self.image = utils.loadImage("player.png")
 
@@ -59,11 +61,23 @@ class Player(pygame.sprite.Sprite):
 		self.rect.x = self.x
 		self.rect.y = self.y
 
+	def checkCollisions(self):
+		if self.x <= 0:
+			self.x = 0
+		elif self.x >= self.surface.get_width() - self.width:
+			self.x = self.surface.get_width() - self.width
+
+		if self.y <= 0:
+			self.y = 0
+		elif self.y >= self.surface.get_height() - self.height:
+			self.y = self.surface.get_height() - self.height
+
 	def update(self, delta):
 		self.updatePosition(delta)
+		self.checkCollisions()
 
-	def render(self, surface):
-		surface.blit(self.image, (self.x, self.y))
+	def render(self):
+		self.surface.blit(self.image, (self.x, self.y))
 
 	def moveUp(self):
 		self.dy = -1

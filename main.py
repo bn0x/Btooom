@@ -30,7 +30,7 @@ class Game(object):
 	def render(self):
 		self.window.fill((0, 0, 0))
 
-		self.player.render(self.window)
+		self.player.render()
 		
 		pygame.display.update()
 		self.delta = self.clock.tick(60)
@@ -44,7 +44,7 @@ class Game(object):
 	def setupObjects(self):
 		self.clock = pygame.time.Clock()
 
-		self.player = Player(0, 0)
+		self.player = Player(0, 0, self.window)
 
 		self.delta = 0
 		
