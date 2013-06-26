@@ -1,0 +1,29 @@
+<vegard1992> err
+<vegard1992> random generation isnt exactly a cakewalk but
+<vegard1992> in short
+<vegard1992> well
+<vegard1992> i cant really say much unless i know exactly what will be on the map 
+<!obnoxious> like uhmm
+<vegard1992> but assuming just a forsest of grass and obstacles like trees and bushes
+<!obnoxious> boulders
+<!obnoxious> trees
+<!obnoxious> etc
+<vegard1992> i.e. walkable and unwalkable tiles
+<vegard1992> and nothjng morie advanced than that
+<vegard1992> with a sort of "cramped" feel
+<vegard1992> we will generate many small rooms and connect them
+<vegard1992> so the rooms / corridors between are walkable
+<vegard1992> the rest is unwalkable
+<vegard1992> walkable = grass
+<vegard1992> unwalkable = random stuff we put herea nd there (trees, boulders, bushes)
+<!obnoxious> yea
+<!obnoxious> also
+<!obnoxious> for the bombs 
+<jhpy1024> I always have trouble with collision detection.
+<vegard1992> so how good it looks dependsm ostly on the generated art
+<!obnoxious> I want some sort of gradient affect with the damage
+<!obnoxious> like
+<!obnoxious> for example
+<!obnoxious> if a bomb explodes and you are right on top of it
+<!obnoxious> its an instant kill
+<vegard1992> im gonna copypaste this as a doc for the map gen
