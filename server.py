@@ -2,7 +2,7 @@ import socket
 import threading
 from threading import Thread
 serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-serverSocket.bind(('', 9021))
+serverSocket.bind(('', 35931))
 serverSocket.listen(1337)
 
 registeredNicks = {}
