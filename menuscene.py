@@ -4,6 +4,7 @@ import utils
 import pygame
 from scene import Scene
 from pygame.locals import *
+from playscene import PlayScene
 
 class MenuScene(Scene):
 	def __init__(self):
@@ -13,6 +14,9 @@ class MenuScene(Scene):
 		for event in pygame.event.get():
 			if event.type == QUIT:
 				utils.quit()
+			elif event.type == KEYDOWN:
+				if event.key == K_F1:
+					self.manager.setScene(PlayScene())
 
 	def update(self):
 		pass
