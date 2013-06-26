@@ -1,6 +1,7 @@
 import socket
 from threading import Thread
 from net.netshared import *
+import pickle
 
 
 def s2c_send_message(s, host, port, msg):
@@ -56,8 +57,14 @@ class Server_Data:
 
         
     def load_accs(self):
-        pass
+        with open("users.dump", "rb") as f:
+            self.authdict = pickle.load(f)
 
+    def store_accs(self):
+        with open("users.dump", "wb") as f:
+            pickle.dump(self.authdict, f)
+            
+                  
     def id_user(self, acc, pw, ip):
         if acc not in self.authdict:
             return "Please register the account first."
@@ -169,6 +176,8 @@ class Server:
         
         if user == None:
 
+            self.data.store_accs()
+
             if msg.mtype == "register":
                 sendback = self.data.register_user(d["user"], d["pass"])
                 self.add_message(((self.id, "chat", "name:Server@message:"+sendback), f))
@@ -182,6 +191,8 @@ class Server:
             else:
                 self.add_message(((self.id, "chat", "name:Server@message:Not authenticated."), f))
                 self.id += 1
+
+            
 
         else:
 
