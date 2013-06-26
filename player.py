@@ -51,12 +51,15 @@ class Player(pygame.sprite.Sprite):
 			self.moveUp()
 		else:
 
-	def update(self, delta):
+	def updatePosition(self, delta):
 		self.x += self.dx * self.speed * delta
 		self.y += self.dy * self.speed * delta
 
 		self.rect.x = self.x
 		self.rect.y = self.y
+
+	def update(self, delta):
+		self.updatePosition(delta)
 
 	def render(self, surface):
 		surface.blit(self.image, (self.x, self.y))
