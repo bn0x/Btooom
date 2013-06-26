@@ -2,38 +2,34 @@ import socket
 import threading
 from threading import Thread
 serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-serverSocket.bind(('0.0.0.0', 35931))
+serverSocket.bind(('', 9021))
 serverSocket.listen(1337)
 
 registeredNicks = {}
-activeGamesList = []
+activeGamesList = {}
 
 def registerNick(ip, nickName):
 	global registeredNicks
 	registeredNicks[ip] = nickName
-	return '%s is now registered as: %s' % (ip, nickName)
+	return '%s is now registered as: %s\n' % (ip, nickName)
 
 def gamesList():
-	return ''.join(activeGamesList)
+	return '\n'.join(activeGamesList)
 
 def createGame(gameName):
 	global activeGamesList
 	try:
-		gameName = ' '.join(gameName)
+		gameName = ' '.join(gameName).strip('\n')
 	except:
-		pass
-	for i in activeGamesList:
-		try:
-			if gameName in i:
-				return '%s EXIST' % gameName
-			else:
-				activeGamesList.append(gameName)
-				return '%s CREATED' % gameName
-		except:
-			activeGamesList.append(gameName)
-			return '%s CREATED' % gameName
+		gamename = gameName.strip('\n')
 
-	return 'Failed to create game.'
+	if gameName.strip('\n') in activeGamesList:
+		return '%s EXIST\n' % gameName
+	else:
+		return '%s CREATED\n' % gameName
+
+	
+	return 'Failed to create game.\n'
 
 def handleConnection():
 	while True:
@@ -55,8 +51,8 @@ def handleConnection():
 					tempData = createGame(receivedData[1])
 				clientSocket.send(tempData)
 
-		except socket.error:
-			clientSocket.send('Failed parsing command.')
+		except:
+			clientSocket.send('Failed parsing command.\n')
 while 1:
     (clientSocket, address) = serverSocket.accept()
     thread = Thread(target = handleConnection)
