@@ -26,8 +26,8 @@ def createGame(gameName):
 	if gameName.strip('\n') in activeGamesList:
 		return '%s EXIST\n' % gameName
 	else:
+		activeGamesList[gameName] = gameName
 		return '%s CREATED\n' % gameName
-
 	
 	return 'Failed to create game.\n'
 
