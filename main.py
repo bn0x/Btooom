@@ -2,6 +2,7 @@
 
 import sys
 import pygame
+from player import Player
 from pygame.locals import *
 
 class Game(object):
@@ -16,23 +17,23 @@ class Game(object):
 		
 	def input(self):
 		for event in pygame.event.get():
+
+			self.player.input(event)
+
 			if event.type == QUIT:
 				pygame.quit()
 				sys.exit(0)
-				
-			# Handle input here
 		
 	def update(self):
-		# Update stuff such as game objects here
-		pass
+		self.player.update(self.delta)
 		
 	def render(self):
-		self.window.fill((0, 0, 0)) # Fill the screen with black
-		
-		# Draw everything here
+		self.window.fill((0, 0, 0))
+
+		self.player.render(self.window)
 		
 		pygame.display.update()
-		self.delta = self.clock.tick(60) # Keep the game running at 60 FPS
+		self.delta = self.clock.tick(60)
 		
 	def gameLoop(self):
 		while True:
@@ -42,6 +43,10 @@ class Game(object):
 		
 	def setupObjects(self):
 		self.clock = pygame.time.Clock()
+
+		self.player = Player(0, 0)
+
+		self.delta = 0
 		
 	def setupPygame(self):
 		pygame.init()
