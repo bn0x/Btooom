@@ -14,7 +14,7 @@ def registerNick(ip, nickName):
 	return '%s is now registered as: %s' % (ip, nickName)
 
 def gamesList():
-	return ''.join(activeGamesList)
+	return '\n'.join(activeGamesList)
 
 def createGame(gameName):
 	global activeGamesList
