@@ -50,6 +50,7 @@ class Player(pygame.sprite.Sprite):
 		elif keys[self.chosenKeys["up"]]:
 			self.moveUp()
 		else:
+			self.stopY()
 
 	def updatePosition(self, delta):
 		self.x += self.dx * self.speed * delta
