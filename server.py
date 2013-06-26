@@ -32,7 +32,6 @@ def createGame(gameName):
 	else:
 		activeGamesList[gameName] = gameName
 		return '%s CREATED\n' % gameName
-
 	
 	return 'Failed to create game.\n'
 
