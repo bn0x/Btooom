@@ -5,7 +5,7 @@ from time import sleep
 
 
 if __name__ == "__main__":
-    host, sport, cport = "89.10.248.91", 13373, 13372
+    host, sport, cport = "localhost", 13371, 13372
 
     c = Client(host, cport, sport)
     c.start(c.s)
