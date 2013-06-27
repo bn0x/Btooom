@@ -1,0 +1,28 @@
+#collection of TODOs:
+
+#(detection)
+#fix polygon and rect classes, lay them out more logically
+
+#collisions between two moving objects
+#crowd collisions / multiple collisions (more than 3)
+#(these are more long term)
+
+#optimizations;
+#computing "blueprint polygons" for every set of polygons that might collide
+
+#(mathsupp)
+#faster handling of vectors (find a library? (numpy?))
+#faster functions
+
+#(response)        
+#smooth mechanics;
+#proper jumping 
+#fix sliding
+#introduce stable bumping mechanics
+#friction with surfaces
+
+#etc
+#fix collisions with multiple (2-3) objects
+
+#(quadtree)
+##REDO
