@@ -39,7 +39,7 @@ class Client:
         self.lport = lport
         self.tport = tport
         self.s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.s.bind((self.host, self.lport))
+        self.s.bind(("localhost", self.lport))
 
     def add_interface(self, name, interface):
         self.interfaces[name] = interface
